@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/login.css">
+    <title>Twitter</title>
+</head>
+<body>
+<section class="login">
+    <div class="heading">
+        <h2>Welcome to Twitter</h2>
+    </div> 
+
+    <div class="form-wrapper">
+        <h3 class="form-heading">Login Form</h3>
+        <form action="#">
+        
+            <input type="text" placeholder="Username" class="box" name="uname" id="uname" required><br>
+    
+            <input type="password" placeholder="Enter Your Password"class="box" name="psw" id="psw" required><br>
+        
+            
+                <input type="submit" value="Sign in" class="btn">
+            
+        </form>
+        <div class="registration-page">
+            <a href="registration.html">Sing up</a>
+        </div>
+    </div>
+
+</section>
+<script>
+    document.querySelector('.btn').addEventListener('click', (e) => {
+        e.preventDefault();
+
+        const uname = document.getElementById('uname').value;
+        const psw = document.getElementById('psw').value;
+
+        if (uname && psw) {
+            const user = users.find(user => user.uname === uname && user.psw === psw);
+            if (user) {
+                sessionStorage.setItem('uname', uname);
+                alert('Logged in successfully');
+                window.location.href = 'index.html';
+            } else {
+                alert('Invalid username or password');
+            }
+        } 
+        else {
+            alert('Please fill in all fields');
+        }
+        document.getElementById('uname').value = sessionStorage.getItem('uname') || '';
+        document.getElementById('psw').value = sessionStorage.getItem('psw') || '';
+    });
+
+
+</script>
+</body>
+</html>
